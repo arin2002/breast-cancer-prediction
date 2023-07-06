@@ -13,16 +13,17 @@ label_dict = {0: 'Benign', 1: 'Malignant'}
 scale = RobustScaler()
 
 # Function to predict breast cancer
-def predict_breast_cancer(input_data):
-    # Convert the features to a NumPy array and reshape it
-    input_data = np.asarray(input_data)
-    # Make the prediction
-    input_data = input_data.reshape(1, -1)
-    input_data = scale.transform(input_data)
-    prediction = model.predict(input_data)
 
+
+def predict_breast_cancer(features):
+    # Convert the features to a NumPy array and reshape it
+    features = np.array(features).reshape(1, -1)
+    # Make the prediction
+    prediction = model.predict(features)
     # Return the prediction
     return label_dict[prediction[0]]
+
+
 
 # Streamlit app
 
