@@ -11,8 +11,7 @@ model = joblib.load('breast_cancer_model.pkl')
 label_dict = {0: 'Benign', 1: 'Malignant'}
 
 scale = RobustScaler()
-x_train = scale.fit_transform(x_train)
-x_test = scale.transform(x_test)
+scale.fit_transform(x_train)
 # Function to predict breast cancer
 
 
