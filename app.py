@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import joblib
 from sklearn.preprocessing import RobustScaler
+from sklearn.model_selection import train_test_split
+import pandas as pd
 
 
 # Load the pre-trained model
@@ -10,6 +12,12 @@ model = joblib.load('breast_cancer_model.pkl')
 # Define dictionaries for labels
 label_dict = {0: 'Benign', 1: 'Malignant'}
 
+df = pd.read_csv("./datasets/data.csv")
+df.drop(['id', 'Unnamed: 32'], axis=1, inplace=True)
+
+
+x_train, x_test, y_train, y_test = train_test_split(
+    df.iloc[:, 1:], df['diagnosis'], test_size=0.2, random_state=42)
 scale = RobustScaler()
 scale.fit_transform(x_train)
 # Function to predict breast cancer
