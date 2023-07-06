@@ -114,7 +114,6 @@ def main():
     # Create a button to predict breast cancer
     if st.button("Predict"):
         # Call the predict_breast_cancer function with the user input features```
-        st.write(features)
         result = predict_breast_cancer(list(features.values()))
         # Display the prediction
         st.write("Prediction:", result)
