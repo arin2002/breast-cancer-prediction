@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import joblib
+from sklearn.preprocessing import RobustScaler
+
 
 # Load the pre-trained model
 model = joblib.load('breast_cancer_model.pkl')
@@ -8,9 +10,9 @@ model = joblib.load('breast_cancer_model.pkl')
 # Define dictionaries for labels
 label_dict = {0: 'Benign', 1: 'Malignant'}
 
+scale = RobustScaler()
+
 # Function to predict breast cancer
-
-
 def predict_breast_cancer(input_data):
     # Convert the features to a NumPy array and reshape it
     input_data = np.asarray(input_data)
