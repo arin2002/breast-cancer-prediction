@@ -19,7 +19,8 @@ def predict_breast_cancer(input_data):
     # Make the prediction
     input_data = input_data.reshape(1, -1)
     input_data = scale.transform(input_data)
-    pred = model.predict(input_data)
+    prediction = model.predict(input_data)
+
     # Return the prediction
     return label_dict[prediction[0]]
 
